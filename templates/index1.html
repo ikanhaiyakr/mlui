@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IFSS Prediction</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap">
+  <link rel="stylesheet" href="static/css/styles.css">
+  <script src="script.js"></script>
+</head>
+
+<body>
+ <div class="login">
+    <h1 style="color: #800080;">IFSS prediction</h1>
+
+  <form action="{{ url_for('predict') }}" method="post">
+    <select name="Type of fiber" required="required">
+      <option value="" disabled selected>Select type of fiber</option>
+      <option value="1">Carbon fiber (MR-50R)</option>
+        <option value="2">Carbon fiber (T700)</option>
+        <option value="3">Carbon fiber (T700SC-12000)</option>
+        <option value="4">Carbon fiber (T300-3000)</option>
+        <option value="5">Glass fiber (E-glass)</option>
+        <option value="6">Carbon fiber (T800S)</option>
+        <option value="7">Carbon fiber (AS4-W-12 K)</option>
+        <option value="8">Carbon fiber (T300)</option>
+        <option value="9">Glass fiber (GF1 Nufern)</option>
+        <option value="10">Polyester fiber</option>
+      <!-- Add more options as needed -->
+    </select><br>
+    <input type="text" name="Fiber diameter (µm)" placeholder="Fiber diameter (µm)" required="required" /><br>
+    <input type="text" name="Embedded length (µm)" placeholder="Embedded length (µm)" required="required" /><br>
+    <input type="text" name="Young’s modulus of fiber (GPa)" placeholder="Young’s modulus of fiber (GPa)" required="required" /><br>
+    <input type="text" name="Poisson’s ratio of fiber" placeholder="Poisson’s ratio of fiber" required="required" /><br>
+    <select name="Type of matrix" required="required">
+      <option value="" disabled selected>Select type of matrix</option>
+      <option value="1">TriA-X polyimide (JAXA) resin</option>
+      <option value="2">Epoxy (TDE-86)</option>
+      <option value="3">Polyphenylene sulfide (PPS)</option>
+      <option value="4">Epoxy resin</option>
+      <option value="5">Epoxy resin (Epikote 828)</option>
+      <option value="6">Epoxy (bisphenol type-AYD-128)</option>
+      <option value="7">Epoxy resin (TF1408)</option>
+      <option value="8">Resin (Araldite® LY 5052)</option>
+      <option value="9">Epoxy resin (105-A)</option>
+      <option value="10">Poly phthalazinone ether ketone (PPEK)</option>
+      <!-- Add more options as needed -->
+    </select><br>
+    <input type="text" name="Young’s modulus of matrix (GPa)" placeholder="Young’s modulus of matrix (GPa)" required="required" /><br>
+    <input type="text" name="Poisson’s ratio of matrix" placeholder="Poisson’s ratio of matrix" required="required" /><br>
+    <input type="text" name="Loading rate (m/s)" placeholder="Loading rate (m/s)" required="required" /><br>
+    <input type="text" name="Prepare temperature (℃)" placeholder="Prepare temperature (℃)" required="required" /><br>
+    <input type="text" name="Test temperature (℃)" placeholder="Test temperature (℃)" required="required" /><p>
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict IFSS of Composite Materials</button></p>
+  </form>
+
+  <br>
+  <br>
+  <h4 style="color: #800080;">
+    {{ prediction_text }}
+  </h4>
+ </div>
+</body>
+</html>
